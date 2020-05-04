@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../static/styles/style.css">
+<link rel="stylesheet" href="../static/styles/bootstrap.min.css" >
+</head>
+<body>
+
+
+    <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand">LOGO</a>
+        <form class="form-inline">
+          <button type="button" class="btn btn-outline-danger">
+            Instagram <i class="fa fa-instagram" aria-hidden="true"></i>
+          </button>
+          <span style="margin-left: 10px;"></span>
+          <button type="button" class="btn btn-outline-primary">
+            Facebook <i class="fa fa-facebook-official" aria-hidden="true"></i>
+          </button>
+          <span style="margin-left: 10px;"></span>
+          <a href="{{url_for('logout')}}"><button type="button" class="btn btn-outline-info"></a>
+            Logout 
+          </button>
+        </form>
+      </nav>
+
+<div class="row justify-content-between">
+  <div class="col-3"  >
+     <div class="card" style="overflow-y: scroll; height: 350px;" >
+      <h2>Chat</h2>
+    </div>
+    <div class="card" >
+        <button class="btn btn-primary">Create a Group</button>
+        <span style="margin-top: 20px;"></span>
+        <button class="btn btn-secondary">Create a Webinar</button>
+        <span style="margin-top: 20px;"></span>
+        <button class="btn btn-info">Train a Bot</button>
+      </div>
+  </div>
+  <div class=" col-3" >
+    <div class="card" style="height: 550px;">
+      <center><p>General Info</p></center>
+      <hr style="margin-top: -10px;">
+      <div class="profile">
+          <div class="row">
+            <center> <div class="col-5">
+                <div class="avatar">
+                    <img  src="https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_auto:good%2Cw_300/MTU0NjQzOTk4OTQ4OTkyMzQy/ansel-elgort-poses-for-a-portrait-during-the-baby-driver-premiere-2017-sxsw-conference-and-festivals-on-march-11-2017-in-austin-texas-photo-by-matt-winkelmeyer_getty-imagesfor-sxsw-square.jpg" alt="Circle Image" class="img-raised rounded-circle img-fluid">
+                </div> 
+              </div>
+              <div class="col">
+                <div class="name">
+                    <h3 class="title">{% if name %}{{ name }}{% endif %}</h3>
+                    <h6>{% if email %}{{ email }}{% endif %}</h6>
+                    
+                    
+                </div>
+              </div>
+              
+            </center>  
+          </div>
+    </div>
+    <div class="card" style="overflow-y: scroll; height: 400px; margin-top: 100px;" >
+      <h2>Invite</h2>
+      <table>
+        <tr>
+          <th>Username</th>
+          <th>Accept</th>
+          </tr>
+        {% for i in user  %}
+          <tr>
+          <td>{{i}}</td>
+          {% if session['name'] %}
+          {% endif %}
+            <td><a href="/accept/{{i}}"><button class="btn btn-outline-info"  >Accept</button></a></td>
+        </tr>
+        {% endfor %}
+      </table>
+      
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>
+</html>
